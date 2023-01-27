@@ -111,3 +111,13 @@ Scenario: Erro ao Cadastrar um novo Usuário, CPF já utilizado
     And Escrevo "Casa" em "Complemento"
     And Clico em "Cadastrar"
     Then Eu recebo uma mensagem de Erro do cadastro, CPF já utilizado
+
+Scenario: Erro Usuário, já logado no sistema tenta trocar sua senha, erra sua senha atual
+    Given Eu estou na página de "Informações do Cliente"
+    And Eu estou logado com o email "gmm7@cin.ufpe.br" e senha  "123456Gui"
+    When Eu clico na opção "Alterar Senha"
+    And Escrevo "3456Gui" em "Senha Atual"
+    And Escrevo "98765Gui" em "Nova Senha"
+    And Escrevo "98765Gui" em "Confirmar Senha"
+    And Clico em "Confirmar"
+    Then Eu recebo uma mensagem de erro, senha atual errada
