@@ -123,3 +123,18 @@ Scenario: Erro Usuário, já logado no sistema tenta trocar sua senha, erra sua 
     And Escrevo "98765Gui" em "Confirmar Senha"
     And Clico em "Confirmar"
     Then Eu recebo uma mensagem de erro, senha atual errada
+
+Scenario: Cadastrar um novo Usuário
+    Given Eu estou na página de "Cadastrar novo Cliente"
+    When Escrevo "Gabriel Maciel de Melo" em "Nome"
+    And Escrevo "gmm8@cin.ufpe.br" em "e-mail"
+    And Escrevo "123456Gabi" em "Senha"
+    And Escrevo "456.123.789-10" em "CPF"
+    And Escrevo "88888-8888" em "Telefone"
+    And Escrevo "PE" em "estado"
+    And Escrevo "Caruaru" em "Cidade"
+    And Escrevo "345" em "numero"
+    And Escrevo "Avenida Ceara" em "Endereço"
+    And Escrevo "Casa" em "Complemento"
+    And Clico em "Cadastrar"
+    Then Eu recebo uma mensagem de cadastro realizado 
