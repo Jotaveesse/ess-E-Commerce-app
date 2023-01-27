@@ -97,3 +97,29 @@ Scenario: Administrador default deseja remover outro administrador do sistema
     And Clico em "confirmar"
     Then Eu recebo uma mensagem de que o usuário foi removido do sisema
     And Eu permaneço na página de "Painel Admin"
+
+Scenario: Erro ao Cadastrar um novo Usuário, CPF já utilizado
+    Given Eu estou na página de "Cadastrar novo Cliente"
+    And O sistema já possui "CPF" "123.456.789-10" já cadastrado
+    When Escrevo "Guilherme Maciel de Melo" em "Nome"
+    And Escrevo "gmm7@cin.ufpe.br" em "e-mail"
+    And Escrevo "123456Gui" em "Senha"
+    And Escrevo "123.456.789-10" em "CPF"
+    And Escrevo "99999-9999" em "Telefone"
+    And Escrevo "PE" em "estado"
+    And Escrevo "Recife" em "Cidade"
+    And Escrevo "345" em "numero"
+    And Escrevo "Rua General Vargas" em "Endereço"
+    And Escrevo "Casa" em "Complemento"
+    And Clico em "Cadastrar"
+    Then Eu recebo uma mensagem de Erro do cadastro, CPF já utilizado
+
+Scenario: Erro Usuário, já logado no sistema tenta trocar sua senha, erra sua senha atual
+    Given Eu estou na página de "Informações do Cliente"
+    And Eu estou logado com o email "gmm7@cin.ufpe.br" e senha  "123456Gui"
+    When Eu clico na opção "Alterar Senha"
+    And Escrevo "3456Gui" em "Senha Atual"
+    And Escrevo "98765Gui" em "Nova Senha"
+    And Escrevo "98765Gui" em "Confirmar Senha"
+    And Clico em "Confirmar"
+    Then Eu recebo uma mensagem de erro, senha atual errada
