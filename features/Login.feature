@@ -72,3 +72,4 @@ Scenario: Tentativa de login quando já está logado
 	And Eu clico em "Entrar"
 	Then A mensagem "Você já está logado" é exibida
 	And Eu sou redirecionado para a "Página Inicial"
+	And Eu continuo logado com o email "jvs2@cin.ufpe.br"
