@@ -37,11 +37,11 @@ Scenario: Recuperar senha
 	And Clico em "Enviar"
 	Then Eu recebo um e-mail com instruções para recuperar minha senha
 	And Eu sigo as instruções do e-mail e vou para a página de "Redefinição de senha"
-	And Insiro a senha "qwer87654321" em "Nova Senha" e "Repetir Senha"
+	And Insiro a senha "qwe87654321" em "Nova Senha" e "Repetir Senha"
 	And Clico em "Confirmar"
 	Then Eu recebo uma mensagem de sucesso informando que minha senha foi atualizada
 	And Eu recebo um email avisando que minha senha foi alterada
-	And Eu posso usar a senha "qwer87654321" para acessar minha conta
+	And Eu posso usar a senha "qwe87654321" para acessar minha conta
 
 Scenario: Número de tentativas de login excedidas
 	Given Eu já tentei logar com dados errados 4 vezes
