@@ -65,7 +65,7 @@ Scenario: Sessão atual fechada
 	Then Não estou mais logado no sistema
 
 Scenario: Tentativa de login quando já está logado
-	GGiven Eu estou na página de "Login"
+	Given Eu estou na página de "Login"
 	And Eu estou logado com o email "jvs2@cin.ufpe.br"
 	When Eu digito o email "outro@cin.ufpe.br" em "Email"
 	And Eu digito minha senha "qwe12345678" em "Senha"
