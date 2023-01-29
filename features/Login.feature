@@ -1,5 +1,5 @@
 Scenario: Login com dados corretos
-	Given Eu estou na página de login
+	Given Eu estou na página de "Login"
 	And O email "jvs2@cin.ufpe.br" já foi cadastrado com a senha "qwe12345678"
 	When Eu digito o meu email "jvs2@cin.ufpe.br" em "Email"
 	And Eu digito minha senha "qwe12345678" em "Senha"
@@ -9,7 +9,7 @@ Scenario: Login com dados corretos
 	And O meu nome "João Victor da Silva" é exibido no canto superior direito da página
 
 Scenario: Login com usuário não existente
-	Given Eu estou na página de login
+	Given Eu estou na página de "Login"
 	And O email "jvs2@cin.ufpe.br" não foi cadastrado no sistema
 	When Eu digito o email "jvs20@cin.ufpe.br" em "Email"
 	And Eu digito a senha "qwer12345678" em "Senha"
@@ -19,7 +19,7 @@ Scenario: Login com usuário não existente
 	And Não sou logado no sistema
 
 Scenario: Login com senha errada
-	Given Eu estou na página de login
+	Given Eu estou na página de "Login"
 	And O email "jvs2@cin.ufpe.br" já foi cadastrado com a senha "qwe12345678"
 	When Eu digito um email existente "jvs2@cin.ufpe.br" em "Email"
 	And Eu digito uma senha errada "12345678" em "Senha"
@@ -31,7 +31,7 @@ Scenario: Login com senha errada
 	And Não sou logado no sistema
 	
 Scenario: Recuperar senha
-	Given Eu estou na página de "Recuperar Senha"
+	Given Eu estou na página de "Login"
 	And O email "jvs2@cin.ufpe.br" já foi cadastrado com a senha "qwe12345678"
 	When Eu insiro meu endereço de e-mail "jvs2@cin.ufpe.br" em "Email"
 	And Clico em "Enviar"
@@ -55,7 +55,7 @@ Scenario: Deslogar
 	Given Eu estou na "Página Inicial"
 	And Eu estou logado com o email "jvs2@cin.ufpe.br"
 	When Eu clico em "Sair"
-	Then Eu sou redirecionado para a página de login
+	Then Eu sou redirecionado para a página de "Login"
 	And Não estou mais logado no sistema
 	
 Scenario: Sessão atual fechada
@@ -65,7 +65,7 @@ Scenario: Sessão atual fechada
 	Then Não estou mais logado no sistema
 
 Scenario: Tentativa de login quando já está logado
-	Given Eu estou na página de login
+	GGiven Eu estou na página de "Login"
 	And Eu estou logado com o email "jvs2@cin.ufpe.br"
 	When Eu digito o email "outro@cin.ufpe.br" em "Email"
 	And Eu digito minha senha "qwe12345678" em "Senha"
@@ -75,7 +75,7 @@ Scenario: Tentativa de login quando já está logado
 	And Eu continuo logado com o email "jvs2@cin.ufpe.br"
 	
 Scenario: Tentativa de login após bloqueio
-	Given Eu estou na "Página de Login"
+	Given Eu estou na página de "Login"
 	And O email "jvs2@cin.ufpe.br" já foi cadastrado com a senha "qwe12345678"
 	And Eu fui bloqueado inserir dados errados no login
 	When Eu digito um email existente "jvs2@cin.ufpe.br" em "Email"
@@ -83,4 +83,4 @@ Scenario: Tentativa de login após bloqueio
 	And Eu clico em "Entrar"
 	Then A mensagem "Número de tentativas de login excedido. Por favor, tente novamente mais tarde." é exibida
 	And Não sou logado no sistema
-	And Eu continuo na "Página de Login"
+	And Eu continuo na página de "Login"
