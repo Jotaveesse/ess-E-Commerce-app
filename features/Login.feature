@@ -12,7 +12,7 @@ Scenario: Login com usuário não existente
 	Given Eu estou na página de "Login"
 	And O email "jvs2@cin.ufpe.br" não foi cadastrado no sistema
 	When Eu digito o email "jvs20@cin.ufpe.br" em "Email"
-	And Eu digito a senha "qwer12345678" em "Senha"
+	And Eu digito a senha "qwe12345678" em "Senha"
 	And Eu clico em "Entrar"
 	Then Eu recebo uma mensagem de erro informando que o usuário não existe
 	And Eu continuo na página de login
