@@ -43,7 +43,7 @@ Scenario: Recuperar senha
 	And Eu recebo um email avisando que minha senha foi alterada
 	And Eu posso usar a senha "qwer87654321" para acessar minha conta
 
-Scenario: Número de tentativas excedido
+Scenario: Número de tentativas de login excedidas
 	Given Eu já tentei logar com dados errados 4 vezes
 	And O email "jvs2@cin.ufpe.br" já foi cadastrado com a senha "qwe12345678"
 	When Eu digito um email existente "jvs2@cin.ufpe.br" em "Email"
@@ -72,3 +72,14 @@ Scenario: Tentativa de login quando já está logado
 	And Eu clico em "Entrar"
 	Then A mensagem "Você já está logado" é exibida
 	And Eu sou redirecionado para a "Página Inicial"
+	
+Scenario: Tentativa de login após bloqueio
+	Given Eu estou na página de login
+	And O email "jvs2@cin.ufpe.br" já foi cadastrado com a senha "qwe12345678"
+	And Eu fui bloqueado inserir dados errados no login
+	When Eu digito um email existente "jvs2@cin.ufpe.br" em "Email"
+	And Eu digito minha senha "qwe12345678" em "Senha"
+	And Eu clico em "Entrar"
+	Then A mensagem "Número de tentativas de login excedido. Por favor, tente novamente mais tarde." é exibida
+	And Não sou logado no sistema
+	
