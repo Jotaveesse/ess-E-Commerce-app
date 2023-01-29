@@ -75,7 +75,7 @@ Scenario: Tentativa de login quando já está logado
 	And Eu continuo logado com o email "jvs2@cin.ufpe.br"
 	
 Scenario: Tentativa de login após bloqueio
-	Given Eu estou na página de login
+	Given Eu estou na "Página de Login"
 	And O email "jvs2@cin.ufpe.br" já foi cadastrado com a senha "qwe12345678"
 	And Eu fui bloqueado inserir dados errados no login
 	When Eu digito um email existente "jvs2@cin.ufpe.br" em "Email"
@@ -83,3 +83,4 @@ Scenario: Tentativa de login após bloqueio
 	And Eu clico em "Entrar"
 	Then A mensagem "Número de tentativas de login excedido. Por favor, tente novamente mais tarde." é exibida
 	And Não sou logado no sistema
+	And Eu continuo na "Página de Login"
